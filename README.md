@@ -1,4 +1,4 @@
-# 🧑‍🚀 Personal Homepage Template
+# 🧑‍🚀 Personal Homepage Template [[Preview](https://w-r-s.github.io/academic-homepage-template/)]
 
 This repository is a reusable academic and personal homepage template. The visible profile belongs to a fictional person; names, affiliations, projects, publications, awards, and contact details are sample content only.
 

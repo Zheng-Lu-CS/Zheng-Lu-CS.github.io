@@ -14,9 +14,11 @@ Open http://127.0.0.1:8080/ in your browser.
 
 ## Editing
 
-- `index.html`: content and links
+- `index.html`: default English homepage
+- `zh.html`: Chinese homepage
 - `stylesheet.css`: page styling and responsive layout
-- `cv.pdf`: curriculum vitae
+- `cv.pdf`: Chinese curriculum vitae
+- `zhenglu_cv1007_english.pdf`: English curriculum vitae
 - `paper/`: paper PDFs
 - `images/me/`: personal portrait and favicon
 - `images/paper/`: figures extracted from the papers

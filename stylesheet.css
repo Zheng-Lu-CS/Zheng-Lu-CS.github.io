@@ -1132,13 +1132,6 @@ span.highlight {
 .news-updates .news-entry { margin: 8px 0; line-height: 1.6; }
 
 /* Profile and research experience */
-.homepage { max-width: 800px; margin: 0 auto; }
-.profile-section { display: flex; align-items: center; gap: 32px; padding: 20px; }
-.profile-copy { flex: 1; min-width: 0; }
-.profile-name { margin: 0 0 18px; font-size: 28px; font-weight: 400; text-align: center; }
-.profile-copy .bio-paragraph { line-height: 1.55; }
-.profile-photo { flex: 0 0 190px; }
-.profile-photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .profile-divider { height: 1px; background: linear-gradient(to right, transparent, #ccc 20%, #ccc 80%, transparent); margin: 14px 0; }
 .experience-section, .leadership-section { margin: 24px 20px 0; }
 .section-heading { margin: 0 0 18px; font-size: 25px; font-weight: 400; text-decoration: underline; text-decoration-color: #fba524; }
@@ -1154,9 +1147,6 @@ span.highlight {
 .leadership-section { margin-bottom: 36px; }
 .leadership-entry { line-height: 1.6; }
 @media (max-width: 680px) {
-  .profile-section { flex-direction: column; gap: 20px; padding: 18px 12px; }
-  .profile-photo { flex: none; order: -1; width: 150px; }
-  .profile-name { margin-bottom: 14px; }
   .experience-section, .leadership-section { margin-left: 12px; margin-right: 12px; }
   .experience-header { flex-direction: column; gap: 2px; }
 }

@@ -1,19 +1,24 @@
-# 🧑‍🚀 Personal Homepage Template [[Preview](https://w-r-s.github.io/academic-homepage-template/)]
+# Zheng Lu — Academic Homepage
 
-This repository is a reusable academic and personal homepage template. The visible profile belongs to a fictional person; names, affiliations, projects, publications, awards, and contact details are sample content only.
+Personal academic homepage of Zheng Lu, a Computer Science and Technology undergraduate at UESTC and research intern at Galbot in Beijing.
 
-Start locally with:
+The site includes a biography, news, publications, research and internship experience, and leadership and service.
+
+## Local preview
 
 ```bash
-python3 -m http.server 8080 --bind 127.0.0.1
+python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Before publishing, replace the sample identity and links in `index.html` and the placeholder assets in `images/template/`.
+Open http://127.0.0.1:8080/ in your browser.
 
-This homepage benefits from many projects and tools, including but not limited to:
+## Editing
 
-- Claude Code with Opus 4.6
-- CodeX with GPT-5.5
-- Audio-Interaction: https://xzf-thu.github.io/Audio-Interaction/
+- `index.html`: content and links
+- `stylesheet.css`: page styling and responsive layout
+- `cv.pdf`: curriculum vitae
+- `paper/`: paper PDFs
+- `images/me/`: personal portrait and favicon
+- `images/paper/`: figures extracted from the papers
 
-> Keep the layout, customize the content, and make it yours.
+Based on the [Personal Homepage Template](https://github.com/w-r-s/academic-homepage-template).

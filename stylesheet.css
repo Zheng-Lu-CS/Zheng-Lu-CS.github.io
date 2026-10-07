@@ -1156,3 +1156,7 @@ span.highlight {
 .language-switch a { padding: 3px 8px; border-radius: 5px; }
 .language-switch a[aria-current="page"] { color: #6e3519; background: rgba(251,165,36,0.12); font-weight: 700; }
 html[lang="zh-CN"] body { font-family: 'Lato', 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+
+/* AI club introduction */
+.club-description { margin: 10px 0 0; line-height: 1.7; }
+.club-highlight { color: #f49300; font-weight: 700; }

@@ -107,137 +107,91 @@
           </tr>
         </tbody></table>
         
-		<table id="publications" class="publications-table page-section" style="width:100%;border:0px;border-spacing:0 16px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <heading>Publications</heading>
-    <br>
-   <p>† Equal contribution. * Corresponding author. The leading papers are <span style="background-color: #FFFEE0;">highlighted</span>.</p>
-   <p>The entries below are fictional examples. Replace them with your publications and update your <a href="#">Google Scholar</a> link.</p>
-          
-          <!-- Research Interests Tag Filter -->
-          <style>
-            .tag-filter {
-              display: flex;
-              flex-wrap: wrap;
-              gap: 8px;
-              margin: 16px auto 0;
-              justify-content: center;
-            }
-            .tag-btn {
-              padding: 5px 14px;
-              border-radius: 20px;
-              border: 1px solid rgba(17, 17, 17, 0.18);
-              background: rgba(251, 165, 36, 0.06);
-              color: #6e3519;
-              font-size: 13px;
-              cursor: pointer;
-              transition: all 0.2s;
-            }
-            .tag-btn:hover {
-              border-color: rgba(17, 17, 17, 0.36);
-              background: rgba(251, 165, 36, 0.1);
-              color: #6e3519;
-            }
-            .tag-btn.active {
-              background: #ad7020;
-              color: #fff;
-              border-color: rgba(17, 17, 17, 0.62);
-              box-shadow: 0 2px 8px rgba(173, 112, 32, 0.22);
-            }
-            .tag-count {
-              display: inline-block;
-              background: rgba(0,0,0,0.15);
-              color: inherit;
-              font-size: 11px;
-              font-weight: bold;
-              width: 18px;
-              height: 18px;
-              line-height: 18px;
-              border-radius: 50%;
-              text-align: center;
-              margin-left: 5px;
-              vertical-align: middle;
-            }
-            .tag-btn.active .tag-count {
-              background: rgba(255, 255, 255, 0.22);
-              color: #fff;
-            }
-            .tag-btn:not(.active) .tag-count {
-              background: rgba(251, 165, 36, 0.14);
-              color: #6e3519;
-            }
-            .publications-table tr[data-tags] > td {
-              border-top: 1px solid rgba(0, 0, 0, 0.14);
-              border-bottom: 1px solid rgba(0, 0, 0, 0.14);
-              background: #fff;
-            }
-            .publications-table tr[data-tags] > td:first-child {
-              border-left: 1px solid rgba(0, 0, 0, 0.14);
-              border-radius: 8px 0 0 8px;
-            }
-            .publications-table tr[data-tags] > td:last-child {
-              border-right: 1px solid rgba(0, 0, 0, 0.14);
-              border-radius: 0 8px 8px 0;
-            }
-            .publications-table tr[data-tags][style*="lightyellow"] > td {
-              background: lightyellow;
-            }
-
-            /* 自定义复制提示框样式 */
-            .toast-message {
-              position: fixed;
-              top: var(--toast-y, 20px);
-              left: var(--toast-x, 50%);
-              transform: translate(-50%, -120%);
-              background: rgba(255, 255, 255, 0.8);
-              color: #333;
-              padding: 8px 16px;
-              border-radius: 20px;
-              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-              z-index: 2000;
-              opacity: 0;
-              transition: all 0.3s ease;
-              pointer-events: none;
-              border: 1px solid rgba(0,0,0,0.05);
-            }
-            .toast-message.show {
-              opacity: 1;
-              transform: translate(-50%, -135%);
-            }
-          </style>
-          
-          <div class="tag-filter" id="tagFilter">
-            <button class="tag-btn active" data-tag="all">All</button>
-	            <button class="tag-btn" data-tag="multimodal-gen">Generation</button>
-	            <button class="tag-btn" data-tag="mllm">Multimodal</button>
-	            <button class="tag-btn" data-tag="medical">Medical</button>
-	            <button class="tag-btn" data-tag="world-model">World Model</button>
-            <button class="tag-btn" data-tag="benchmark">Benchmark</button>
+        <section id="publications" class="publications-section page-section" aria-labelledby="publications-heading">
+          <h2 id="publications-heading">Publications</h2>
+          <p class="publication-note">Selected papers and manuscripts. First-author work is <span class="highlight">highlighted</span>. See also my <a href="https://scholar.google.com/citations?user=8BOq9eUAAAAJ">Google Scholar</a>.</p>
+          <p class="publication-note">* Equal contribution. † Project leader. ‡ Corresponding author.</p>
+          <div class="tag-filter" id="tagFilter" role="group" aria-label="Filter publications by research area">
+            <button type="button" class="tag-btn active" data-tag="all" aria-pressed="true">All</button>
+            <button type="button" class="tag-btn" data-tag="reinforcement-learning" aria-pressed="false">Reinforcement Learning</button>
+            <button type="button" class="tag-btn" data-tag="multimodal" aria-pressed="false">Multimodal</button>
+            <button type="button" class="tag-btn" data-tag="agentic" aria-pressed="false">Agentic</button>
           </div>
-
-          <script>
-            // Inject counts into tag buttons (after full DOM is parsed)
-            document.addEventListener('DOMContentLoaded', function() {
-              const rows = document.querySelectorAll('tr[data-tags]');
-              const total = rows.length;
-              document.querySelectorAll('.tag-btn').forEach(function(btn) {
-                const tag = btn.dataset.tag;
-                const count = tag === 'all' ? total : Array.from(rows).filter(r => r.dataset.tags.split(',').includes(tag)).length;
-                btn.insertAdjacentHTML('beforeend', '<span class="tag-count">' + count + '</span>');
+          <table class="publications-table">
+            <tbody>
+              <tr data-tags="reinforcement-learning" class="publication-card is-first-author">
+                <td class="publication-figure">
+                  <a href="paper/47262_Better_Policies_from_Sho%20%281%29.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read Better Policies from Short Comparisons: Minimal Post-Training with Frozen World Models">
+                    <img src="images/paper/cpr.png" alt="CPR framework: short branches in a frozen world model and a constrained policy update" loading="lazy" decoding="async">
+                  </a>
+                </td>
+                <td class="publication-content">
+                  <span class="publication-category">Reinforcement Learning · CPR</span>
+                  <h3 class="publication-title"><a href="paper/47262_Better_Policies_from_Sho%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Better Policies from Short Comparisons: Minimal Post-Training with Frozen World Models</a></h3>
+                  <div class="publication-author-list"><strong>Zheng Lu</strong>, Rui Huang, Lingbei Meng, Tinghao Wang, Bofan Zhu, Bowen Han, Yuxi Lu, Yiran Li, Peize He, Yaodi Luo, Zhengbo Jiao, Lian Zhang, Jianqing Zhu</div>
+                  <p class="publication-status">Submitted to AAAI 2027</p>
+                  <p class="publication-links"><a href="paper/47262_Better_Policies_from_Sho%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Paper (PDF)</a></p>
+                  <p class="publication-summary">Comparative Policy Repair (CPR) improves policies by comparing short action branches in a frozen world model and distilling relative advantages under a KL constraint. It requires no additional environment interaction, achieving 3.8%–5.2% aggregate gains on Atari and DMC and a 5.0 percentage-point gain on MT50 with only 0.1%–0.7% of the original training compute.</p>
+                </td>
+              </tr>
+              <tr data-tags="multimodal" class="publication-card">
+                <td class="publication-figure">
+                  <a href="paper/2606.27161v2.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient MLLM Inference">
+                    <img src="images/paper/tops.png" alt="TOPS framework for visual token selection using task relevance, information coverage and semantic diversity" loading="lazy" decoding="async">
+                  </a>
+                </td>
+                <td class="publication-content">
+                  <span class="publication-category">Multimodal · TOPS</span>
+                  <h3 class="publication-title"><a href="paper/2606.27161v2.pdf" target="_blank" rel="noopener noreferrer">TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient MLLM Inference</a></h3>
+                  <div class="publication-author-list">Tinghao Wang*, Yichen Guo*, Rui Huang*†, Junchi Yao, Qizhe Zhang, <strong>Zheng Lu</strong>, Yuan Zhang, Jiajun Cao, Zhirong Shen, Yaosong Du, Lijie Hu, Shanghang Zhang‡</div>
+                  <p class="publication-status">Submitted to EMNLP 2026</p>
+                  <p class="publication-links"><a href="paper/2606.27161v2.pdf" target="_blank" rel="noopener noreferrer">Paper (PDF)</a> <span aria-hidden="true">/</span> <a href="https://arxiv.org/abs/2606.27161" target="_blank" rel="noopener noreferrer">arXiv</a></p>
+                  <p class="publication-summary">A training-free, model-agnostic visual token pruning method grounded in task relevance, information coverage, and semantic diversity. Evaluated on 7 MLLM backbones and 14 benchmarks, TOPS removes 77.8% of visual tokens while retaining 100.0% and 100.6% of baseline performance on LLaVA-NeXT-7B and 13B, respectively.</p>
+                </td>
+              </tr>
+              <tr data-tags="agentic" class="publication-card">
+                <td class="publication-figure">
+                  <a href="paper/175_Let_It_Go_Narrative_Lock_i.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read Let It Go: Narrative Lock-in in Open-ended Real-Life AI Agents">
+                    <img src="images/paper/let-it-go.png" alt="Narrative Lock-in mechanism: an early erroneous narrative becomes task state and reinforces wrong decisions" loading="lazy" decoding="async">
+                  </a>
+                </td>
+                <td class="publication-content">
+                  <span class="publication-category">Agentic · Let It Go</span>
+                  <h3 class="publication-title"><a href="paper/175_Let_It_Go_Narrative_Lock_i.pdf" target="_blank" rel="noopener noreferrer">Let It Go: Narrative Lock-in in Open-ended Real-Life AI Agents</a></h3>
+                  <div class="publication-author-list">Bofan Zhu, Rui Huang, Zhirong Shen, Chang Zou, Xingyu Yue, <strong>Zheng Lu</strong>, Xin Ma, Chenhang Cui, Linfeng Zhang</div>
+                  <p class="publication-status">FAGEN Workshop @ ICML 2026 · Poster</p>
+                  <p class="publication-links"><a href="paper/175_Let_It_Go_Narrative_Lock_i.pdf" target="_blank" rel="noopener noreferrer">Paper (PDF)</a></p>
+                  <p class="publication-summary">We characterize Narrative Lock-in: early erroneous beliefs become persistent task state and resist contradictory evidence in long-horizon agents. Across eight task domains and four models, we study this failure mode and introduce Nexus, an external oversight framework that separates execution from supervision to reduce error-path persistence and improve recovery.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <script>
+          (function() {
+            const section = document.getElementById('publications');
+            const rows = Array.from(section.querySelectorAll('tr[data-tags]'));
+            const buttons = section.querySelectorAll('.tag-btn');
+            buttons.forEach(function(button) {
+              const count = rows.filter(row => button.dataset.tag === 'all' || row.dataset.tags.split(',').includes(button.dataset.tag)).length;
+              const badge = document.createElement('span');
+              badge.className = 'tag-count';
+              badge.textContent = count;
+              button.appendChild(badge);
+            });
+            document.getElementById('tagFilter').addEventListener('click', function(event) {
+              const button = event.target.closest('.tag-btn');
+              if (!button) return;
+              buttons.forEach(function(item) {
+                const active = item === button;
+                item.classList.toggle('active', active);
+                item.setAttribute('aria-pressed', String(active));
+              });
+              rows.forEach(function(row) {
+                row.hidden = button.dataset.tag !== 'all' && !row.dataset.tags.split(',').includes(button.dataset.tag);
               });
             });
-
-            // Tag filter
-            document.getElementById('tagFilter').addEventListener('click', function(e) {
-              const btn = e.target.closest('.tag-btn');
-              if (!btn) return;
-              document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-              btn.classList.add('active');
-              const tag = btn.dataset.tag;
-              document.querySelectorAll('tr[data-tags]').forEach(function(row) {
-                row.style.display = (tag === 'all' || row.dataset.tags.split(',').includes(tag)) ? '' : 'none';
-              });
-            });
-
+          })();
             function copyText(text, event) {
               const showToast = () => {
                 const toast = document.getElementById('toast');
@@ -284,379 +238,8 @@
               copyText('zheng_lu@std.uestc.edu.cn', e);
             });
             
-          </script>
 
-	          <tr data-tags="medical">
-	            <td style="padding:20px;width:30%;vertical-align:middle">
-	              <div class="one">
-	                <div class="two" id="rarelens_image">
-	                  <br>
-	                  <img src="images/paper/rarelens.png" width="190" alt="RareLens clinical workflow">
-	                </div>
-	                <br>
-	                <img src="images/paper/rarelens.png" width="190" alt="RareLens clinical workflow">
-	                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/geteff1/RareLens?style=flat-square&color=yellow&label=stars&logo=GitHub">
-	              </div>
-	              <script type="text/javascript">
-	                function rarelens_start() {
-	                  document.getElementById('rarelens_image').style.opacity = "1";
-	                }
-	                function rarelens_stop() {
-	                  document.getElementById('rarelens_image').style.opacity = "0";
-	                }
-	                rarelens_stop()
-	              </script>
-	            </td>
-	            <td style="padding:20px;width:70%;vertical-align:middle">
-					<a href="https://arxiv.org/pdf/2607.23290">
-	              <papertitle>OpenLens: Interpretable Multimodal Assistants for Community Science</papertitle>
-					</a>
-	              <br>
-	              <a:focus>Xi Chen</a:focus>,
-	              <a:focus>Hongru Zhou</a:focus>,
-	              <a:focus>Shiyu Feng</a:focus>,
-	              <a:focus>Hanyu Zhou</a:focus>,
-	              <a:focus>Huahui Yi</a:focus>,
-	              <a:focus><strong>Alex Morgan</strong></a:focus>,
-	              <a:focus>Tiancheng He</a:focus>,
-	              <a:focus>Kun Wang</a:focus>,
-	              <a:focus>Pingping Liu</a:focus>,
-	              <a:focus>Qiankun Li</a:focus>,
-	              <a:focus>Sicheng Lin</a:focus>,
-	              <a:focus>Huiying Ou</a:focus>,
-	              <a:focus>Xiaohong Zheng</a:focus>,
-	              <a:focus>Tianying Zang</a:focus>,
-	              <a:focus>Zhuohang Wu</a:focus>,
-	              <a:focus>Leheng Jiang</a:focus>,
-	              <a:focus>Kexin Cao</a:focus>,
-	              <a:focus>Wenhan Zhang</a:focus>,
-	              <a:focus>ChengYi Li</a:focus>,
-	              <a:focus>Zhiyang Wang</a:focus>,
-	              <a:focus>Songlin Li</a:focus>,
-	              <a:focus>Benyou Wang</a:focus>,
-	              <a:focus>Ningbei Yin</a:focus>,
-	              <a:focus>Shaoting Zhang</a:focus>,
-	              <a:focus>Weili Fu*</a:focus>,
-	              <a:focus>Jian Li*</a:focus>,
-	              <a:focus>Kang Li*</a:focus>
-	              <br>
-	              <a href="http://rarelens.org/">Homepage</a>
-	              /
-	              <a href="https://eval.rarelens.org/">Human Evaluation</a>
-	              /
-	              <a href="https://github.com/geteff1/RareLens">Code</a>
-				  /
-              	  <a href="https://arxiv.org/abs/2607.23290">Paper</a>
-	              <br>
-	              <em><strong>Preprint</strong></em>
-	              <p></p>
-	              <p>
-	              RareLens provides trustworthy, actionable decision support across the full rare-disease care pathway, from early risk screening and diagnosis to treatment, efficacy evaluation, and prognosis.
-	            </td>
-	          </tr>
-
-	          <tr data-tags="benchmark">
-            <td style="padding:20px;width:30%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='gamecraft_image'>
-                  <br>
-                  <img src='images/paper/gamecraft-bench.png' width="190"></div>
-                  <br>
-                  <img src='images/paper/gamecraft-bench.png' width="190">
-                  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/FreedomIntelligence/gamecraft-bench?style=flat-square&color=yellow&label=stars&logo=GitHub">
-                </div>
-              <script type="text/javascript">
-                function gamecraft_start() {
-                  document.getElementById('gamecraft_image').style.opacity = "1";
-                }
-                function gamecraft_stop() {
-                  document.getElementById('gamecraft_image').style.opacity = "0";
-                }
-                gamecraft_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:70%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2606.17861">
-                <papertitle>StudioBench: Evaluating Creative Agents in Interactive Environments</papertitle>
-              </a>
-              <br>
-              <a:focus>Tongxu Luo†</a:focus>,
-              <a:focus><strong>Alex Morgan†</strong></a:focus>,
-              <a:focus>Jiaxi Bi†</a:focus>,
-              <a:focus>Chenming Xu†</a:focus>,
-              <a:focus>Zhengyang Tang†</a:focus>,
-              <a:focus>Jianlong Chen</a:focus>,
-              <a:focus>Juhao Liang</a:focus>,
-              <a:focus>Ke Ji</a:focus>,
-              <a:focus>Shuqi Guo</a:focus>,
-              <a:focus>Yuhao Du</a:focus>,
-              <a:focus>Fan Bu</a:focus>,
-              <a:focus>Wenyu Du</a:focus>,
-              <a:focus>Xiaotong Zhang</a:focus>,
-              <a:focus>Kyle Li</a:focus>,
-              <a:focus>Shaobo Wang</a:focus>,
-              <a:focus>Linfeng Zhang</a:focus>,
-              <a:focus>Yuxuan Liu</a:focus>,
-              <a:focus>Xin Lai</a:focus>,
-              <a:focus>Chenxin Li</a:focus>,
-              <a:focus>Yiduo Guo</a:focus>,
-              <a:focus>Zhexin Zhang</a:focus>,
-              <a:focus>Xinyuan Wang</a:focus>,
-              <a:focus>Tianyi Bai</a:focus>,
-              <a:focus>Ziniu Li</a:focus>,
-              <a:focus>Benyou Wang*</a:focus>
-              <br>
-              <a href="https://tongxuluo.github.io/gamecraft-bench-website/">Homepage</a>&nbsp;/&nbsp;<a href="https://github.com/FreedomIntelligence/gamecraft-bench">Code</a>&nbsp;/&nbsp;<a href="https://arxiv.org/abs/2606.17861">Paper</a>
-              <br>
-              <em><strong>Preprint</strong></em>
-              <p></p>
-              <p>
-              GameCraft-Bench evaluates whether agents can build playable games end-to-end in a real game engine.
-              </td>
-          </tr>
-
-		<tr style="background-color: lightyellow;" data-tags="world-model">
-            <td style="padding:20px;width:30%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='malle_image'>
-                  <br>
-                  <img src='images/paper/microverse.png' width="160"></div>
-                  <br>
-                  <img src='images/paper/microverse.png' width="160">
-                  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/FreedomIntelligence/MicroVerse?style=flat-square&color=yellow&label=stars&logo=GitHub">
-                </div>
-              <script type="text/javascript">
-                function malle_start() {
-                  document.getElementById('malle_image').style.opacity = "1";
-                }
-                function malle_stop() {
-                  document.getElementById('malle_image').style.opacity = "0";
-                }
-                malle_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:70%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2603.00585">
-                <papertitle>TinyWorlds: Learning Robust Policies in Compact Simulated Environments</papertitle>
-              </a>
-              <br>
-              <a:focus><strong>Alex Morgan†</strong></a:focus>,
-              <a:focus>Minghao Wu†</a:focus>,
-              <a:focus>Hongru Zhou</a:focus>,
-              <a:focus>Zhihan Yu</a:focus>,
-              <a:focus>Zhenyang Cai</a:focus>,
-			  <a:focus>Junying Chen</a:focus>,
-              <a:focus>Benyou Wang*</a:focus>
-              <br>
-              <a href="https://github.com/FreedomIntelligence/MicroVerse">Code</a>
-              /
-              <a href="https://arxiv.org/abs/2603.00585">Paper</a>
-              <br>
-			  <span style="color: red;"><em><strong>ICLR 2026 (Poster)</strong></em></span>
-              <p></p>
-              <p>
-              MicroVerse is a world model designed to faithfully simulate biological processes at the microscale.
-              </td>
-          </tr>
-                    
-	          <tr style="background-color: lightyellow;" data-tags="multimodal-gen,medical">
-            <td style="padding:20px;width:30%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='malle_image'>
-                  <br>
-                  <img src='images/paper/medgen.png' width="160"></div>
-                  <br>
-                  <img src='images/paper/medgen.png' width="160">
-                  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/FreedomIntelligence/MedGen?style=flat-square&color=yellow&label=stars&logo=GitHub">
-                </div>
-              <script type="text/javascript">
-                function malle_start() {
-                  document.getElementById('malle_image').style.opacity = "1";
-                }
-                function malle_stop() {
-                  document.getElementById('malle_image').style.opacity = "0";
-                }
-                malle_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:70%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2507.05675">
-                <papertitle>FrameWeaver: Controllable Video Generation with Structured Annotations</papertitle>
-              </a>
-              <br>
-              <a:focus><strong>Alex Morgan†</strong></a:focus>,
-              <a:focus>Junying Chen†</a:focus>,
-              <a:focus>Ke Ji</a:focus>,
-              <a:focus>Zhenyang Cai</a:focus>,
-              <a:focus>Shunian Chen</a:focus>,
-              <a:focus>Benyou Wang*</a:focus>
-              <br>
-              <a href="https://github.com/FreedomIntelligence/MedGen">Code</a>
-              /
-              <a href="https://arxiv.org/abs/2507.05675">Paper</a>
-              /
-              <a href="https://huggingface.co/datasets/FreedomIntelligence/MedVideoCap-55K">Dataset</a>
-			  /
-              <a href="https://huggingface.co/FreedomIntelligence/MedGen-14B">Model</a>
-              <br>
-              <em><strong>Preprint</strong></em>
-              <p></p>
-              <p>
-              MedGen is a medical video generation model, built on the large-scale, caption-rich MedVideoCap-55K dataset.
-              </td>
-          </tr>
-
-	          <tr data-tags="mllm,medical">
-            <td style="padding:20px;width:30%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='malle_image'>
-                  <br>
-                  <img src='images/paper/med-mat.png' width="190"></div>
-                  <br>
-                  <img src='images/paper/med-mat.png' width="190">
-                  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/FreedomIntelligence/Med-MAT?style=flat-square&color=yellow&label=stars&logo=GitHub">
-                </div>
-              <script type="text/javascript">
-                function malle_start() {
-                  document.getElementById('malle_image').style.opacity = "1";
-                }
-                function malle_stop() {
-                  document.getElementById('malle_image').style.opacity = "0";
-                }
-                malle_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:70%;vertical-align:middle">
-              <a href="https://aclanthology.org/2025.acl-long.639.pdf">
-                <papertitle>Compositional Generalization in Multimodal Scientific Reasoning</papertitle>
-              </a>
-              <br>
-              <a:focus>Zhenyang Cai†</a:focus>,
-              <a:focus>Junying Chen†</a:focus>,
-              <a:focus><strong>Alex Morgan†</strong></a:focus>,
-              <a:focus>Weilong Wang</a:focus>,
-              <a:focus>Yonglin Deng</a:focus>,
-              <a:focus>Dingjie Song</a:focus>,
-              <a:focus>Yize Chen</a:focus>,
-              <a:focus>Zixu Zhang</a:focus>,
-              <a:focus>Benyou Wang*</a:focus>
-              <br>
-              <a href="https://github.com/FreedomIntelligence/Med-MAT">Code</a>
-              /
-              <a href="https://aclanthology.org/2025.acl-long.639.pdf">Paper</a>
-              /
-              <a href="https://huggingface.co/datasets/FreedomIntelligence/Med-MAT">Dataset</a>
-              <br>
-              <span style="color: red;"><em><strong>ACL 2025 (Main)</strong></em></span>
-              <p></p>
-              <p>
-              Multimodal LLMs achieve strong generalization in medical imaging largely through compositional generalization (CG).
-              </td>
-          </tr>
-
-
-	        </tbody></table>
-	        <script>
-	          (function() {
-	            var rows = document.querySelectorAll('.publications-table tr[data-tags]');
-
-	            rows.forEach(function(row, index) {
-	              var title = row.querySelector('papertitle');
-	              if (!title) return;
-
-	              var titleContainer = title.closest('a') || title;
-	              var firstBreak = titleContainer.nextElementSibling;
-	              if (!firstBreak || firstBreak.tagName !== 'BR') return;
-
-	              var lastBreak = firstBreak.nextElementSibling;
-	              while (lastBreak && lastBreak.tagName !== 'BR') {
-	                lastBreak = lastBreak.nextElementSibling;
-	              }
-	              if (!lastBreak) return;
-
-	              var authorNodes = [];
-	              var node = firstBreak.nextSibling;
-	              while (node && node !== lastBreak) {
-	                authorNodes.push(node);
-	                node = node.nextSibling;
-	              }
-
-	              var shell = document.createElement('div');
-	              shell.className = 'publication-authors-shell';
-	              var authors = document.createElement('div');
-	              authors.className = 'publication-authors';
-	              authors.id = 'publication-authors-' + index;
-	              authorNodes.forEach(function(authorNode) {
-	                authors.appendChild(authorNode);
-	              });
-
-	              var toggle = document.createElement('button');
-	              toggle.type = 'button';
-	              toggle.className = 'publication-authors-toggle';
-	              toggle.textContent = '▶';
-	              toggle.setAttribute('aria-controls', authors.id);
-	              toggle.setAttribute('aria-expanded', 'false');
-	              toggle.setAttribute('aria-label', 'Expand author list');
-	              toggle.title = 'Expand author list';
-
-	              shell.appendChild(authors);
-	              shell.appendChild(toggle);
-	              firstBreak.parentNode.insertBefore(shell, firstBreak);
-	              firstBreak.remove();
-	              lastBreak.remove();
-
-	              toggle.addEventListener('click', function() {
-	                var expanded = shell.classList.toggle('expanded');
-	                toggle.textContent = expanded ? '▼' : '▶';
-	                toggle.setAttribute('aria-expanded', String(expanded));
-	                toggle.setAttribute('aria-label', expanded ? 'Collapse author list' : 'Expand author list');
-	                toggle.title = expanded ? 'Collapse author list' : 'Expand author list';
-	              });
-	            });
-
-	            function updateAuthorToggles() {
-	              document.querySelectorAll('.publication-authors-shell').forEach(function(shell) {
-	                var authors = shell.querySelector('.publication-authors');
-	                var toggle = shell.querySelector('.publication-authors-toggle');
-	                var wasExpanded = shell.classList.contains('expanded');
-	                if (wasExpanded) shell.classList.remove('expanded');
-	                var hasOverflow = authors.scrollHeight > authors.clientHeight + 1;
-	                if (wasExpanded) shell.classList.add('expanded');
-	                toggle.hidden = !hasOverflow;
-	              });
-	            }
-
-	            updateAuthorToggles();
-
-	            // The publication cards are template examples, so their visible author lists
-	            // and destinations intentionally do not identify real people or projects.
-	            var sampleAuthors = [
-	              '<strong>Alex Morgan</strong>, Jamie Park, Noor Patel, Mira Chen*',
-	              '<strong>Alex Morgan†</strong>, Sam Rivera†, Taylor Kim, Mira Chen*',
-	              '<strong>Alex Morgan†</strong>, Jordan Lee†, Casey Wu, Mira Chen*',
-	              '<strong>Alex Morgan†</strong>, Robin Shah†, Dana Brooks, Mira Chen*',
-	              'Jamie Park†, <strong>Alex Morgan†</strong>, Noor Patel, Mira Chen*'
-	            ];
-	            document.querySelectorAll('.publication-authors').forEach(function(authors, index) {
-	              authors.innerHTML = sampleAuthors[index] || sampleAuthors[0];
-	            });
-	            rows.forEach(function(row) {
-	              row.querySelectorAll('a').forEach(function(link) {
-	                link.href = '#';
-	                link.removeAttribute('target');
-	              });
-	              row.querySelectorAll('img[src*="shields.io"]').forEach(function(badge) {
-	                badge.remove();
-	              });
-	            });
-
-	            var resizeFrame;
-	            window.addEventListener('resize', function() {
-	              cancelAnimationFrame(resizeFrame);
-	              resizeFrame = requestAnimationFrame(updateAuthorToggles);
-	            }, { passive: true });
-	          })();
-	        </script>
+        </script>
 
 	        <table id="experience" class="page-section" width="100%" align="center" border="0" cellpadding="10"><tbody>
           <br>

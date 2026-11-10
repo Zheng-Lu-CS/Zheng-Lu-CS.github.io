@@ -1160,3 +1160,11 @@ html[lang="zh-CN"] body { font-family: 'Lato', 'Microsoft YaHei', 'PingFang SC',
 /* AI club introduction */
 .club-description { margin: 10px 0 0; line-height: 1.7; }
 .club-highlight { color: #f49300; font-weight: 700; }
+
+/* Keep WeChat with Scholar and GitHub on one contact row. */
+.contact-social-line { flex-wrap: nowrap; }
+@media (max-width: 380px) {
+  .contact-social-line { gap: 2px; }
+  .contact-social-line a { font-size: 12px; gap: 3px; }
+  .contact-social-line svg { width: 12px; height: 12px; }
+}
